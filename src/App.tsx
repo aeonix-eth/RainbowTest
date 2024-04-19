@@ -1,22 +1,42 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import Github from "./Components/github";
-import Twitter from "./Components/twitter";
+//import Github from "./Components/github";
+//import Twitter from "./Components/twitter";
+
+import React from "react";
+import Navbar from "./Components/Navbar";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+} from "react-router-dom";
+
+import Home from "./pages";
+import About from "./pages/about";
+import Blogs from "./pages/blogs";
+import SignUp from "./pages/signup";
+import Contact from "./pages/contact";
 
 function App() {
   return (
-    <div className="flex justify-center items-center h-screen text-white w-screen p-10">
-      <div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl pb-10 font-bold text-center">
-          Roundtable
-        </h1>
-        <div className="flex justify-center">
-          <ConnectButton showBalance={false} />
-        </div>
-        <div className="flex flex-col pt-10">
 
-        </div>
-      </div>
-    </div>
+    <Router>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route
+                    path="/contact"
+                    element={<Contact />}
+                />
+                <Route path="/blogs" element={<Blogs />} />
+                <Route
+                    path="/sign-up"
+                    element={<SignUp />}
+                />
+            </Routes>
+        </Router>
+
+   
   );
 }
 
